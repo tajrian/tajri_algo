@@ -1,4 +1,5 @@
-//bubble sort
+//Bubble sort Code
+//Decresing Order
 
 #include<bits/stdc++.h>
 using namespace std;
