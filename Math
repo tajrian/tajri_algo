@@ -1,0 +1,26 @@
+// Base conversation: Decimal to Any other base:
+
+#include<bits/stdc++.h>
+using namespace std;
+
+int power(int n,int m)
+{
+    int ans=1;
+    for(int i=1;i<=m;i++){
+       ans*=n;
+    }
+    return ans;
+}
+
+int main()
+{
+    int num,base,i=0,x,ans=0;
+    scanf("%d %d",&num,&base);// given number and its base
+    while(num){
+        x=num%10;
+        num/=10;
+        ans+=x*power(base,i);
+        i++;
+    }
+    printf("%d",ans);
+}
