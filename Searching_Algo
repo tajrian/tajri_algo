@@ -1,0 +1,14 @@
+// Binary Search
+
+vector<int>ara;//search space
+
+int bsearch(int target)
+{
+    int lo=0,high=ara.size();
+    while(lo<=high){
+        mid=lo+((high-lo)/2);
+        if(target==ara[mid])return ara[mid];
+        else if(target<ara[mid])high=mid-1;
+        else low=mid+1;
+    }
+}
