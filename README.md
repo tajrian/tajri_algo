@@ -11,4 +11,7 @@ Math:
     
 Searching:
   - Binary Search
+  
+Combinatories:
+  - creating pair out of different disjoint sets-Hackerrank moon problem 
    
