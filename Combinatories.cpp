@@ -37,3 +37,52 @@ Answer = (axb) x (a+b)xc + (a+b+c)xd ..........................(3)
 
 Do you see the pattern? That means when we find a new set, the new answer is the old answer + the sum of old values x new value.
 */
+
+
+//problem link: https://www.hackerrank.com/challenges/journey-to-the-moon
+
+#include<bits/stdc++.h>
+using namespace std;
+
+long long nodes,ans,sum;
+
+vector<int>re[100000];
+bool visited[100005];
+
+void DFS(int n){
+    nodes++;
+    visited[n]=true;
+    for(int i=0;i<re[n].size();i++){
+        if(!visited[re[n][i]])DFS(re[n][i]);
+    }
+}
+
+int main()
+{
+    long long n,m,n1,n2,i;
+    scanf("%lld %lld",&n,&m);
+    while(m--){
+        scanf("%lld %lld",&n1,&n2);
+        re[n1].push_back(n2);
+        re[n2].push_back(n1);
+    }
+    ans=0;
+    sum=0;
+    for(i=0;i<n;i++){
+        if(!visited[i]){
+            //printf("i: %lld\n",i);
+            nodes=0;
+            DFS(i);
+            //printf("%lld has elemnt: %lld\n",i,nodes);
+            ans+=(sum*nodes);
+            sum+=nodes;
+        }
+    }
+    printf("%lld\n",ans);
+    return 0;
+}
+
+
+------------------------------------------------------------------------------
+------------------------------------------------------------------------------
+
