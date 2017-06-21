@@ -43,3 +43,12 @@ int main()
     }
     cout<<s<<endl;
 }
+
+//perfect squres within given range
+
+int countOddSquares(int n, int m)
+{
+   return (int)pow(m,0.5) - (int)pow(n-1,0.5); // nlower bound ,m upper bound 
+}
+
+//-----------------------------
