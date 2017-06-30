@@ -52,3 +52,23 @@ int countOddSquares(int n, int m)
 }
 
 //-----------------------------
+
+//bigmod
+
+ll bigmod(ll a, ll b, ll md)
+{
+
+    ll r = 1;
+    while(b)
+    {
+
+        if(b&1) r = (r * a%md)%md;
+        a = (a%md * a%md)%md;
+        b = b/2;
+
+    }
+    return r;
+
+}
+
+//-----------------------------------
