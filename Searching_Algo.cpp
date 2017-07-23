@@ -4,7 +4,7 @@ vector<int>ara;//search space
 
 int bsearch(int target)
 {
-    int lo=0,high=ara.size();
+    int lo=0,high=ara.size()-1;
     while(lo<=high){
         mid=lo+((high-lo)/2);
         if(target==ara[mid])return ara[mid];
@@ -23,8 +23,8 @@ int b_search(int lo,int high,int ara[]){
     if(lo>high)return -1;
     int mid=lo+((high-lo)/2);
     if(t==ara[mid])return mid;
-    else if(t<ara[mid]) b_search(lo,mid-1,ara);
-    else if(t>ara[mid]) b_search(mid+1,high,ara);
+    else if(t<ara[mid]) return b_search(lo,mid-1,ara);
+    else if(t>ara[mid]) return b_search(mid+1,high,ara);
 }
 
 int main()
