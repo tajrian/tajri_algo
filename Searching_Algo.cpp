@@ -45,3 +45,15 @@ int main()
 }
 
 //------------------------------------
+
+//binnary search function of non increasing array with no multiple occurances 
+
+int b_search(int lo,int high,int ara[]){
+    if(lo>high)return -1;
+    int mid=lo+((high-lo)/2);
+    if(t==ara[mid])return mid;
+    else if(t<ara[mid]) return b_search(lo,mid-1,ara);
+    else if(t>ara[mid]) return b_search(mid+1,high,ara);
+}
+
+
