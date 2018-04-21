@@ -143,6 +143,95 @@ int bs_bound(int lo,int hi,int ara[]){
 
 }
 
+// returns first occurance or first smaller number's index in a non increasing array 
+
+
+#include<cstdio>
+#include<sstream>
+#include<cstdlib>
+#include<cctype>
+#include<cmath>
+#include<algorithm>
+#include<set>
+#include<queue>
+#include<stack>
+#include<list>
+#include<iostream>
+#include<fstream>
+#include<numeric>
+#include<string>
+#include<vector>
+#include<cstring>
+#include<map>
+#include<iterator>
+#include <iomanip>
+using namespace std;
+
+int result=-1,t,v=-1;
+
+ void bs_f(int lo,int hi,int ara[]){
+     if(lo>hi)return;
+     int mid=lo+((hi-lo)/2);
+     if(t==ara[mid]){
+        result=mid;
+        bs_f(lo,mid-1,ara);
+     }
+     else if(t>ara[mid])bs_f(lo,mid-1,ara);
+     else if(t<ara[mid])bs_f(mid+1,hi,ara);
+}
+
+int bs_bound(int lo,int hi,int ara[]){
+    if(t>ara[lo]){
+        v=1; // v=1 hole songkhar cheye choto songkhar index return korbe
+        return lo;
+    }
+    if(t<ara[hi]){
+        v=2; // v=2 hole songkhar cheye immiditae boro songkhar index return korbe
+        return hi;
+    }
+    int mid=lo+((hi-lo)/2);
+    if(ara[mid]>t){
+        bs_bound(mid+1,hi,ara);
+    }
+    else if(ara[mid]<t){
+        bs_bound(lo,mid-1,ara);
+    }
+
+}
+
+
+
+int main()
+{
+
+    int n,z;
+    while(cin>>n){
+        int ara[n];
+        for(int i=0;i<n;i++)cin>>ara[i];
+        z=-1;
+        cin>>t;
+        if(t>ara[0])z=0;
+        else if(t<ara[n-1])z=n;
+        else{
+        result=-1;
+        bs_f(0,n-1,ara);
+        if(result!=-1){
+            //cout<<"Number found at "<<result+1<<endl;
+            z=result;
+        }
+        else{
+            v=-1;
+            z=bs_bound(0,n-1,ara);
+            if(v==2)z=z+1;
+        }
+        }
+        cout<<z<<endl;
+    }
+    return 0;
+
+}
+
+
 
 
 
