@@ -311,27 +311,34 @@ int main()
 
 
 #include<bits/stdc++.h>
+
 using namespace std;
 
-int store[100];
-int temp[100];
+int store[10];
 int n;
 
-void mergesort(int lo,int hi){
-    if(lo==hi)return;
-    int mid=(lo+hi)/2;
-    mergesort(lo,mid);
-    mergesort(mid+1,hi);
-    int i,j,k;
-    for(i=lo,j=mid+1,k=lo;k<=hi;k++){
-        if(i==mid+1)temp[k]=store[j++];
-        else if(j==hi+1)temp[k]=store[i++];
-        else if(store[i]>store[j])temp[k]=store[i++];
-        else temp[k]=store[j++];
+void buildheap(int i)
+{
+    //printf("********Before Swap: %d node value %d\n",i,store[i]);
+    if(i>n)return;
+    int left=2*i;
+    int right=(2*i)+1;
+    //printf("node: %d left :  %d Right: %d\n",i,left,right);
+    buildheap(left);
+    buildheap(right);
+    if(left<=n){
+        //printf("left %d within %d\n",left,n);
+        //printf("Before swap: store[i]:%d store[left]:%d\n",store[i],store[left]);
+        if(store[left]<store[i])swap(store[i],store[left]);
+        //printf("After swap: store[i]:%d store[left]:%d\n",store[i],store[left]);
     }
-    for(i=lo;i<=hi;i++){
-        store[i]=temp[i];
+    if(right<=n){
+        //printf("right %d within %d\n",right,n);
+        //printf("Before swap: store[i]:%d store[right]:%d\n",store[i],store[right]);
+        if(store[right]<store[i])swap(store[i],store[right]);
+        //printf("After swap: store[i]:%d store[right]:%d\n",store[i],store[right]);
     }
+    //printf("********After Swap: %d node value %d\n",i,store[i]);
 }
 
 void show(int m)
@@ -345,6 +352,7 @@ void show(int m)
 
 int main()
 {
+    memset(store,-1,sizeof(store));
     printf("Enter the number of elements to sort:\n");
     scanf("%d",&n);
     printf("Enter the elements to sort:");
@@ -352,10 +360,22 @@ int main()
     {
         scanf("%d",&store[i]);
     }
-    mergesort(1,n);
-    show(n);
+    int l=n;
+    //int l=n;
+    //buildheap(1);
+    //printf("\n");
+    //printf("\n");
+    //show(n);
 
+    while(n>0){
+        buildheap(1);
+        show(l);
+        swap(store[1],store[n]);
+        n--;
+    }
+    show(l);
 }
+
 
 
 
