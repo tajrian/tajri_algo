@@ -158,6 +158,36 @@ int main()
     print_path(n);
 
 }
+ // 0-1 knapsack recursively 
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int ara[100];
+int price[100];
+
+int knapsack(int amount,int index)
+{
+    if(index<0)return 0;
+    if(amount<=0)return 0;
+    int a=knapsack(amount,index-1);
+    int b=knapsack(amount-price[index],index-1)+price[index];
+    return max(a,b);
+}
+
+int main()
+{
+    int amount,n;
+    cin>>amount;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>ara[i];
+        cin>>price[i];
+    }
+    int ans=knapsack(amount,n-1);
+    cout<<ans<<endl;
+}
 
 
 
