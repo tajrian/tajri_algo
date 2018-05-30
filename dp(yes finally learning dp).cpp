@@ -159,6 +159,69 @@ int main()
 
 }
 
+//0_1 knapsack
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int weight[100];
+int price[100];
+
+int dp[100][100];
+
+
+
+int main()
+{
+    int n;
+    int amount;
+    cout<<"Enter Capacity:"<<endl;
+    cin>>amount;
+    cout<<"Enter number of goods:"<<endl;
+    cin>>n;
+    cout<<"Weight Price"<<endl;
+    for(int i=0;i<n;i++){
+        cin>>weight[i];
+        cin>>price[i];
+    }
+
+    for(int i=0;i<=amount;i++){
+        dp[0][i]=0;
+    }
+    for(int j=0;j<=n;j++){
+        dp[j][0]=0;
+    }
+    for(int j=1;j<=n;j++){
+        for(int i=1;i<=amount;i++){
+            if(weight[j-1]>i)dp[j][i]=dp[j-1][i];
+            else dp[j][i]= max((price[j-1]+dp[j-1][i-weight[j-1]]),dp[j-1][i]);
+        }
+    }
+
+    cout<<dp[n][amount]<<endl;
+    
+    // print selected items
+    
+    int res=dp[n][amount];
+    int w=amount;
+    
+    for(int i=n;i>0 && res>0 ;i--){
+        if(res==dp[i-1][w])continue;
+        else{
+            printf("%d",w[i-1]);
+            res=res-price[i-1];
+            w=w-wt[i-1];
+        }
+    }
+
+    
+}
+
+
+
+
+
 
 
 
