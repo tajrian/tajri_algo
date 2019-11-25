@@ -1,0 +1,29 @@
+#include<vector>
+#include<iostream>
+
+using namespace std;
+
+void print_vec(vector<int>v){
+   vector<int>::iterator it;
+   for(it = v.begin();it!=v.end();it++){
+       cout<<*it<<endl;
+   }
+}
+
+int main()
+{
+    vector<int>v(2,100);
+    vector<int>::iterator it;
+    it=v.begin();
+    it=v.insert(it,4,500);
+    v.insert(it,2,100);
+    // "it" no longer valid, get a new one:
+    it = v.begin();
+    int myarray[] ={35,42};
+    v.insert(it,myarray,myarray+2);
+    //print_vec(v);
+    vector<int>v2(2,35);
+    it=v.begin();
+    v.insert(it+2,v2.begin(),v2.end());
+    print_vec(v);
+}
