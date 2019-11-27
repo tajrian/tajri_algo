@@ -126,3 +126,8 @@ int lagrest_pow_of2(int n){
 /*this solution can also be done by finding the number of bit in the given number using i=(int)log2(number)+1 
 and 2^i-1 would be the largest power of 2 less or equal to the number
 */
+
+//x ^ ( x & (x-1)) : Returns the rightmost 1 in binary representation of x.
+//x & (-x) : Returns the rightmost 1 in binary representation of x 
+//x | (1 << n) : Returns the number x with the nth bit set( turn ON(1) if the nth bit of x is off(0))
+    
