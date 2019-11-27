@@ -49,5 +49,21 @@ int how_many1(int n){
     return cnt;
 }
 
+/*
+if ith bit is ON or OFF(1 or 0)
+
+check if ith(i=2) bit of 10 is ON(indexing starts from 0)
+1010
+0100 -> 1<<i
+----
+0000 ->off
+
+*/
+
+
+bool if_1(int n,int i){
+     if(n && (n & (1<<i)))return true;
+     return false;
+}
 
 
