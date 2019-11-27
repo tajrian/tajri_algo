@@ -23,3 +23,31 @@ bool power_of2(int n){
     return false;
 }
 
+
+/*
+Count the number of ones in the binary representation of the given number.
+
+given:10
+  1010
+& 1001
+-----
+  1000
+& 0111 
+------
+  0000
+two two iterations , 2 ones in binary representation of 10
+*/
+
+int how_many1(int n){
+    int cnt=0;
+    if (n){
+        while(n){
+            n=n&(n-1);
+            cnt++;
+        }
+    }
+    return cnt;
+}
+
+
+
