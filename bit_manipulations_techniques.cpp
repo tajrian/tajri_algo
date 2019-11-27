@@ -138,6 +138,9 @@ i  and  j  Write  a method to set all bits between i and j in N equal to M (
 e g  , M becomes a substring of N located at i and starting at j)   
 */
 
+//method 1:
+
+
 #include <iostream>
 
 using namespace std;
@@ -154,5 +157,31 @@ int main()
 {
     printf("%d",bit_replace(1024,21,2,6));
     //outputs  1108
+    return 0;
+}
+
+//method 2
+#include <iostream>
+
+using namespace std;
+
+bool if_1(int n,int i){
+     if(n && (n & (1<<i)))return true;
+     return false;
+}
+
+int changu(int n,int i){
+     return n|(1<<i);
+}
+
+int main()
+{
+    int i,n=1024,m=21;
+    for(i=0;i<=4;i++){
+        if(if_1(n,i+2)!=if_1(m,i)){
+            n=changu(n,i+2);
+        }
+    }
+    printf("%d",n);
     return 0;
 }
