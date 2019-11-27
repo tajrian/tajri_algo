@@ -104,3 +104,25 @@ void allsubsets(char c[],int N){
     }
 }
 
+//How many bits in a number
+unsigned countBits(unsigned int number) 
+{       
+      // log function in base 2  
+      // take only integer part 
+      return (int)log2(number)+1; 
+} 
+
+//largest power of 2 less or equal to N
+
+int lagrest_pow_of2(int n){
+    n=n| n>>1;
+    n=n| n>>2;
+    n=n| n>>4;
+    n=n| n>>8;
+    
+    return (n+1)>>1;
+}
+
+/*this solution can also be done by finding the number of bit in the given number using i=(int)log2(number)+1 
+and 2^i-1 would be the largest power of 2 less or equal to the number
+*/
