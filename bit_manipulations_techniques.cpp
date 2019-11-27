@@ -67,3 +67,40 @@ bool if_1(int n,int i){
 }
 
 
+//finding all combinations of a given set
+
+/* the main idea behind this is to find all combination of bit from 1 till 2^N
+here we can find all binary combinarion using bit multiplication techniques like
+
+1 & 1<<0 = 1 ->0th character
+1 & 1<<1 = 0 
+....
+10 & 1<<0= 0 
+10 & 10<<1 = 1 ->1th character
+....
+11 & 1<<0 = ->0th character
+11 & 1<<1 = ->1th character
+....
+100 & 1<<0 = 0
+100 & 1<<1 = 0
+100 & 1<<2 = 1 ->2nd character
+....
+101 & 1<<0 = 1 ->0th character
+101 & 1<<1 = 0
+101 & 1<<2 = 1 ->2nd character
+......
+......
+*/
+
+void allsubsets(char c[],int N){
+    int i,j;
+    for(i=1;i<(1<<N);i++){
+        for(j=0;j<(1<<N);j++){
+            if(i & (1<<j)){
+                cout<<c[j]<<" ";
+            }
+        }
+        cout<<endl;
+    }
+}
+
