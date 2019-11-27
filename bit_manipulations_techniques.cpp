@@ -131,3 +131,4 @@ and 2^i-1 would be the largest power of 2 less or equal to the number
 //x & (-x) : Returns the rightmost 1 in binary representation of x 
 //x | (1 << n) : Returns the number x with the nth bit set( turn ON(1) if the nth bit of x is off(0))
     
+//toggle: mybits.c ^= 1;
